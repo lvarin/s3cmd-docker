@@ -1,10 +1,10 @@
-# s3cmd cronjob template draft
+# Openshift 's3cmd' cronJob template (Draft)
 
-This is a (Draft) templateto create a s3 cronjob. It uses [s3cmd](https://github.com/s3tools/s3cmd) as client, and creates an example cronjob that lists all the available buckets.
+This is a (Draft) template to create a s3 cronjob. It uses [s3cmd](https://github.com/s3tools/s3cmd) as client, and creates an example cronjob that lists all the available buckets.
 
 ## Install
 
-The process to install this template localy to the current namespace is, first add the templte to openshift (`oc create`), then fill up the file `secrets` with the access_key and the secret_key, finaly create the objects (`oc process`).
+The process to install this template localy to the current namespace is, first add the template to openshift (`oc create`), then fill up the file `secrets` with the access_key and the secret_key, finaly create the objects (`oc process`).
 
 ```console
 oc create -f s3cmd.yaml
@@ -30,4 +30,4 @@ With the default syntaxt, the cronjob will only run every hour at half past. In 
 oc create job "test-$(date +%s)" --from=cronjob/s3cmd
 ```
 
-This create a job with a name like `test-1587549857`, which will create a pod. To see the output of the cronjob do a something like `oc logs -f test-1587549857-pod`.
+This creates a job with a name like `test-1587549857`, which will create a pod. To see the output of the cronjob do a something like `oc logs -f test-1587549857-pod`.
