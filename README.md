@@ -11,7 +11,7 @@ oc create -f s3cmd.yaml
 # oc replace -f s3cmd.yaml --force
 oc process -f s3cmd.yaml --parameters
 vim secrets
-# oc delete cronjobs/s3cmd secrets/s3cmd-secret
+# oc delete cronjobs/s3cmd secrets/s3cmd-secret is/s3cmd bc/s3cmd
 oc process s3cmd --param-file secrets  | oc create -f -
 ```
 
@@ -20,6 +20,13 @@ oc process s3cmd --param-file secrets  | oc create -f -
 ```ini
 ACCESSKEY=
 SECRETKEY=
+```
+
+In order to get the values you may use the following command:
+
+```console
+source project_XXXXXXX-openrc.sh # Download it from Pouta
+openstack ec2 credentials list -f yaml
 ```
 
 ## Test installed cronjob
